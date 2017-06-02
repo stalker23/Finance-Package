@@ -1,0 +1,16 @@
+Enter all fixed rate loans below in the same format
+[loan]
+-Name: EddiesFirst
+-Principle:1000
+-Interest: 50
+-Computed Period: monthly
+-Monthly Minimum: 10
+-Monthly Maximum: 100
+
+[loan]
+-Name: Eddies2nd
+-Principle:2000
+-Interest: 60
+-Computed Period: monthly
+-Monthly Minimum: 20
+-Monthly Maximum: 200
