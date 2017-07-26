@@ -17,36 +17,34 @@ def printLoans ():
         print('')
 
 def loanParser(filename):
-    global loanDict
-    global loanList
-    
+
     try:
         fnHandle = open(filename)
         fnLines = fnHandle.readlines()
-        
-        seperateLoan = None 
+
+        seperateLoan = None
         newLoan = None
         tempName = None
     except:
         print('Use a correct file...\nYou used: '+filename)
-        
+
     for eachLine in fnLines:
         if (('[' in eachLine) and (']')):
             if 'loan' in eachLine:
                 if newLoan == None:
                     newLoan = True
                     continue
-                    
+
                 elif newLoan == False:
                     pass
-                    
+
                 elif newLoan:
                     print('This should never print.\nYou suck at making a config file mother fucker...\n\n')
                     sys.exit()
-                    
+
         if newLoan == True:
             newLoan = False
-        
+
         def attributeParser(type,line):
             line = line.strip()
             if type.lower() == ('-name'):
@@ -61,19 +59,19 @@ def loanParser(filename):
                 pass
             elif type.lower() == '-monthly maximum':
                 pass
-            
+
             else:
                 print('type: '+type)
                 print('line: ' +line)
                 print('attribute error...')
                 sys.exit()
-                
+
             typeLen = len((type+':'))
             return(line[typeLen:len(line)].strip())
-            
-        
+
+
         if newLoan == False:
-           
+
             if '-Name:' in eachLine:
                 tempName = attributeParser('-Name',eachLine)
                 print('     Parsing: '+tempName)
@@ -95,8 +93,23 @@ def loanParser(filename):
                 loanDict[tempName]['monthlyMax']=float(attributeParser('-Monthly Minimum',eachLine))
                 newLoan = None
                 print(tempName+'-> Monthly Maximum Parsed')
-                print('')                
+                print('')
             else:
                 pass
-                #comment logic maybe?
-            
+def permutations(iterable, r=None):
+    pool = tuple(iterable)
+    n = len(pool)
+    r = n if r is None else r
+    for indices in product(range(n), repeat=r):
+        if len(set(indices)) == r:
+            yield tuple(pool[i] for i in indices)
+
+def product(*args, repeat=1):
+    # product('ABCD', 'xy') --> Ax Ay Bx By Cx Cy Dx Dy
+    # product(range(2), repeat=3) --> 000 001 010 011 100 101 110 111
+    pools = [tuple(pool) for pool in args] * repeat
+    result = [[]]
+    for pool in pools:
+        result = [x+[y] for x in result for y in pool]
+    for prod in result:
+        yield tuple(prod)
