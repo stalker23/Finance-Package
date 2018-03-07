@@ -1,0 +1,24 @@
+Enter all fixed rate loans below in the same format
+[mortgage]
+-Name: EddiesFirst
+-Principle:1000
+-Interest: 50%
+-Computed Period: monthly
+-Monthly Minimum: 10
+-Monthly Maximum: max
+
+[mortgage]
+-Name: Eddies2nd
+-Principle:12000
+-Interest: 60%
+-Computed Period: monthly
+-Monthly Minimum: 200
+-Monthly Maximum: max
+
+[mortgage]
+-Name: fuckyou
+-Principle:12000
+-Interest: 60%
+-Computed Period: monthly
+-Monthly Minimum: 200
+-Monthly Maximum: max
